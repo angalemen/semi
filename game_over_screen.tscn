@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=3 uid="uid://djrufs7wkhcup"]
+
+[ext_resource type="Texture2D" uid="uid://iej857dp45dk" path="res://assetsbuenos/sirueta.png" id="1_1iuit"]
+[ext_resource type="Script" path="res://game_over_screen.gd" id="1_qgxsy"]
+[ext_resource type="FontFile" uid="uid://b4qwt1kyc6c5k" path="res://assetsbuenos/Biocats.otf" id="2_dxeq6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fp58"]
+bg_color = Color(0.211765, 0.372549, 0.180392, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gx8f"]
+bg_color = Color(0.313726, 0.529412, 0.266667, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_58tox"]
+font = ExtResource("2_dxeq6")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ypi5"]
+font = ExtResource("2_dxeq6")
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qgxsy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -2.0
+offset_right = 19.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -63.0
+offset_right = 79.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5fp58")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -69.0
+offset_right = 92.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8gx8f")
+
+[node name="Sirueta" type="Sprite2D" parent="Panel"]
+position = Vector2(90, 97)
+scale = Vector2(0.298828, 0.298828)
+texture = ExtResource("1_1iuit")
+
+[node name="GameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.5
+offset_top = 39.0
+offset_right = 85.5
+offset_bottom = 68.0
+grow_horizontal = 2
+text = "Has Perdido"
+label_settings = SubResource("LabelSettings_58tox")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -18.5
+offset_right = 149.0
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tienes que
+ mejorar un poco..."
+label_settings = SubResource("LabelSettings_7ypi5")
+
+[node name="restartButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -34.0
+offset_right = 4.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_dxeq6")
+text = "Reintentar"
+
+[connection signal="pressed" from="Panel/restartButton" to="." method="_on_restart_button_pressed"]

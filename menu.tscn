@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnw3e0t02pnm1"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_i5e6p"]
+[ext_resource type="PackedScene" uid="uid://diepuyuuusj3q" path="res://parallax_background.tscn" id="2_nb8ac"]
+[ext_resource type="Texture2D" uid="uid://q7o4gcmmdbba" path="res://assetsbuenos/coollogo_com-11151327.png" id="3_2gxad"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i5e6p")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_nb8ac")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6, -228)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_2gxad")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 640.0
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -44.0
+offset_right = 19.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.28914, 1.41283)
+focus_neighbor_bottom = NodePath("Play")
+theme_override_constants/separation = 30
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Jugar"
+alignment = 0
+text_direction = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Salir"
+alignment = 0
+text_direction = 1
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

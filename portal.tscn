@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckpu52ydi52ei"]
+
+[ext_resource type="Script" path="res://portal.gd" id="1_2xi3s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4u6ue"]
+
+[node name="Portal" type="Area2D"]
+script = ExtResource("1_2xi3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.52907, 3.52907)
+shape = SubResource("CircleShape2D_4u6ue")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
